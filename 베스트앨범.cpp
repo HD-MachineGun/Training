@@ -32,7 +32,6 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
     for(int i=0;i<int(genres.size());i++)
     {
         string genre=genres[i];
-        //cout<<genre<<endl;
         bool isnt=true;
         // 이미 있는 장르인지 찾기
         for(int j=0;j<int(genre_names.size());j++)
@@ -42,18 +41,14 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
             {
                 isnt=false;
                 genre_names[j].sum+=plays[i];
-                //cout<<genre<<" sum값: "<<genre_names[j].sum<<endl;
                 table[genre_names[j].index].push_back({i,plays[i]});
-                //cout<<genre_names[j].index<<"위치에 "<<i<<" "<<plays[i]<<" 삽입"<<endl;
             }
         }
         // 없으면 추가하고 넣기
         if(isnt)
         {
             int idx=int(genre_names.size());
-            //cout<<"추가 인덱스: "<<idx<<endl;
             genre_names.push_back({genre,idx,plays[i]});
-            //cout<<genre<<" "<<idx<<" "<<plays[i]<<endl;
             table[idx].push_back({i,plays[i]});
         }
     }
